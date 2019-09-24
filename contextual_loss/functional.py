@@ -190,6 +190,6 @@ def compute_meshgrid(shape):
 
     feature_grid = torch.meshgrid(rows, cols)
     feature_grid = torch.stack(feature_grid).unsqueeze(0)
-    feature_grid = torch.cat([feature_grid for _ in range(N)], axis=0)
+    feature_grid = torch.cat([feature_grid for _ in range(N)], dim=0)
 
     return feature_grid
