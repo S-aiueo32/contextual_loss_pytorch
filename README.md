@@ -1,5 +1,5 @@
 # Contextual Loss w/ PyTorch
-PyTorch implementation of Contextual Loss and Context Bilateral (CoBi) Loss.
+PyTorch implementation of Contextual Loss and Contextual Bilateral (CoBi) Loss.
 
 # Requirements
 -  Python3.7+
