@@ -108,12 +108,11 @@ def contextual_bilateral_loss(x: torch.Tensor,
     cx_combine = (1. - weight_sp) * cx_feat + weight_sp * cx_sp
 
     k_max_NC, _ = torch.max(cx_combine, dim=2, keepdim=True)
-    k_arg_max_NC = torch.argmax(k_max_NC, dim=1)
 
     cx = 1. - k_max_NC.mean(dim=1)
     cx_loss = torch.mean(-torch.log(cx + 1e-5))
 
-    return cx_loss, k_arg_max_NC
+    return cx_loss
 
 
 def compute_cx(dist_tilde, band_width):
