@@ -1,17 +1,24 @@
-# Contextual Loss w/ PyTorch
-PyTorch implementation of Contextual Loss and Contextual Bilateral (CoBi) Loss.
+# Contextual Loss
+PyTorch implementation of Contextual Loss (CX) and Contextual Bilateral Loss (CoBi).
 
-# Requirements
+## Introduction
+There are many image transformation tasks whose spatially aligned data is hard to capture in the wild.
+Pixel-to-pixel or global loss functions can NOT be directly applied such unaligned data.
+CX is a loss function to defeat the problem.
+The key idea of CX is interpreting images as sets of feature points that don't have spatial coordinates.
+If you want to know more about CX, please refer the original [paper](https://arxiv.org/abs/1803.02077), [repo](https://github.com/roimehrez/contextualLoss) and examples in [./doc](./doc) directory.
+
+## Requirements
 -  Python3.7+
--  `torch`, `torchvision`
+-  `torch` & `torchvision`
 
-# Installation
+## Installation
 ```
-pip install .
+pip install git+https://github.com/S-aiueo32/contextual_loss_pytorch.git
 ```
 
-# Usage
-You can use it in the PyTorch-like style.
+## Usage
+You can use it like PyTorch APIs.
 ```python
 import torch
 
@@ -37,7 +44,12 @@ loss = criterion(img1, img2)
 
 ```
 
-# Reference
-- https://github.com/roimehrez/contextualLoss
-- https://github.com/ceciliavision/zoom-learn-zoom
-- https://gist.github.com/yunjey/3105146c736f9c1055463c33b4c989da
+## Reference
+### Papers
+1. Mechrez, Roey, Itamar Talmi, and Lihi Zelnik-Manor. "The contextual loss for image transformation with non-aligned data." Proceedings of the European Conference on Computer Vision (ECCV). 2018.  
+2. Mechrez, Roey, et al. "Maintaining natural image statistics with the contextual loss." Asian Conference on Computer Vision. Springer, Cham, 2018.
+### Implementations
+Thanks to the owners of the following awesome implementations.
+- Original Repository: https://github.com/roimehrez/contextualLoss
+- Simple PyTorch Implemantation: https://gist.github.com/yunjey/3105146c736f9c1055463c33b4c989da
+- CoBi: https://github.com/ceciliavision/zoom-learn-zoom
