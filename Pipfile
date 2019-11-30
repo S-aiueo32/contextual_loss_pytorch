@@ -8,11 +8,11 @@ pytest = "*"
 flake8 = "*"
 pylint = "*"
 matplotlib = "*"
+ipython = "*"
 
 [packages]
 torch = "*"
 torchvision = "*"
-kornia = "*"
 
 [requires]
 python_version = "3.7"
