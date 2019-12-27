@@ -90,7 +90,7 @@ def contextual_bilateral_loss(x: torch.Tensor,
 
     # spatial loss
     grid = compute_meshgrid(x.shape).to(x.device)
-    dist_raw = compute_l1_distance(grid, grid)
+    dist_raw = compute_l2_distance(grid, grid)
     dist_tilde = compute_relative_distance(dist_raw)
     cx_sp = compute_cx(dist_tilde, band_width)
 
