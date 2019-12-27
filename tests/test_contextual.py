@@ -21,14 +21,14 @@ def test_module_gpu():
 
 
 def test_vgg():
-    prediction = torch.rand(1, 3, 48, 48)
+    prediction = torch.rand(test_shape[0], 3, *test_shape[2:])
     f = ContextualLoss(use_vgg=True)
     loss = f(prediction, prediction)
     assert loss.shape == torch.Size([])
 
 
 def test_vgg_gpu():
-    prediction = torch.rand(1, 3, 48, 48).to('cuda:0')
+    prediction = torch.rand(test_shape[0], 3, *test_shape[2:]).to('cuda:0')
     f = ContextualLoss(use_vgg=True).to('cuda:0')
     loss = f(prediction, prediction)
     assert loss.shape == torch.Size([])
