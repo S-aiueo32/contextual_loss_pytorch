@@ -33,7 +33,8 @@ def contextual_loss(x: torch.Tensor,
     cx_loss : torch.Tensor
         contextual loss between x and y (Eq (1) in the paper)
     """
-
+        
+    loss_type = loss_type.lower()
     assert x.size() == y.size(), 'input tensor must have the same size.'
     assert loss_type in LOSS_TYPES, f'select a loss type from {LOSS_TYPES}.'
 
@@ -58,7 +59,7 @@ def contextual_loss(x: torch.Tensor,
 def contextual_bilateral_loss(x: torch.Tensor,
                               y: torch.Tensor,
                               weight_sp: float = 0.1,
-                              band_width: float = 1.,
+                              band_width: float = 0.5,
                               loss_type: str = 'cosine'):
     """
     Computes Contextual Bilateral (CoBi) Loss between x and y,
@@ -70,6 +71,8 @@ def contextual_bilateral_loss(x: torch.Tensor,
         features of shape (N, C, H, W).
     y : torch.Tensor
         features of shape (N, C, H, W).
+    weight_sp : float, optional
+        a balancing weight between spatial and feature loss.
     band_width : float, optional
         a band-width parameter used to convert distance to similarity.
         in the paper, this is described as :math:`h`.
@@ -84,7 +87,8 @@ def contextual_bilateral_loss(x: torch.Tensor,
     k_arg_max_NC : torch.Tensor
         indices to maximize similarity over channels.
     """
-
+    
+    loss_type = loss_type.lower()
     assert x.size() == y.size(), 'input tensor must have the same size.'
     assert loss_type in LOSS_TYPES, f'select a loss type from {LOSS_TYPES}.'
 
