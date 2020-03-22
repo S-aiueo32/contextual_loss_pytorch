@@ -14,6 +14,9 @@ class ContextualLoss(nn.Module):
     ---
     band_width : int, optional
         a band_width parameter described as :math:`h` in the paper.
+    loss_type : str, optional
+        a loss type to measure the distance between features.
+        Note: `l1` and `l2` frequently raises OOM.
     use_vgg : bool, optional
         if you want to use VGG feature, set this `True`.
     vgg_layer : str, optional
@@ -35,6 +38,7 @@ class ContextualLoss(nn.Module):
             f'select a loss type from {LOSS_TYPES}.'
 
         self.band_width = band_width
+        self.loss_type = loss_type
 
         if use_vgg:
             self.vgg_model = VGG19()
@@ -63,4 +67,4 @@ class ContextualLoss(nn.Module):
             x = getattr(self.vgg_model(x), self.vgg_layer)
             y = getattr(self.vgg_model(y), self.vgg_layer)
 
-        return F.contextual_loss(x, y, self.band_width)
+        return F.contextual_loss(x, y, self.band_width, self.loss_type)
