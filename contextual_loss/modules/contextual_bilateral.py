@@ -35,7 +35,8 @@ class ContextualBilateralLoss(nn.Module):
                  vgg_layer: str = 'relu3_4'):
 
         super(ContextualBilateralLoss, self).__init__()
-
+        loss_type = loss_type.lower()
+        
         assert band_width > 0, 'band_width parameter must be positive.'
         assert loss_type in LOSS_TYPES,\
             f'select a loss type from {LOSS_TYPES}.'

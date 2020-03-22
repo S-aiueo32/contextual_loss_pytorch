@@ -33,7 +33,8 @@ def contextual_loss(x: torch.Tensor,
     cx_loss : torch.Tensor
         contextual loss between x and y (Eq (1) in the paper)
     """
-
+        
+    loss_type = loss_type.lower()
     assert x.size() == y.size(), 'input tensor must have the same size.'
     assert loss_type in LOSS_TYPES, f'select a loss type from {LOSS_TYPES}.'
 
@@ -86,7 +87,8 @@ def contextual_bilateral_loss(x: torch.Tensor,
     k_arg_max_NC : torch.Tensor
         indices to maximize similarity over channels.
     """
-
+    
+    loss_type = loss_type.lower()
     assert x.size() == y.size(), 'input tensor must have the same size.'
     assert loss_type in LOSS_TYPES, f'select a loss type from {LOSS_TYPES}.'
 
