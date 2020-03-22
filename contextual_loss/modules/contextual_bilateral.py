@@ -36,7 +36,8 @@ class ContextualBilateralLoss(nn.Module):
         assert band_width > 0, 'band_width parameter must be positive.'
         assert loss_type in LOSS_TYPES,\
             f'select a loss type from {LOSS_TYPES}.'
-
+        
+        self.weight_sp = weight_sp
         self.band_width = band_width
 
         if use_vgg:
@@ -66,4 +67,4 @@ class ContextualBilateralLoss(nn.Module):
             x = getattr(self.vgg_model(x), self.vgg_layer)
             y = getattr(self.vgg_model(y), self.vgg_layer)
 
-        return F.contextual_bilateral_loss(x, y, self.band_width)
+        return F.contextual_bilateral_loss(x, y, self.weight_sp, self.band_width)

@@ -70,6 +70,8 @@ def contextual_bilateral_loss(x: torch.Tensor,
         features of shape (N, C, H, W).
     y : torch.Tensor
         features of shape (N, C, H, W).
+    weight_sp : float, optional
+        a balancing weight between spatial and feature loss.
     band_width : float, optional
         a band-width parameter used to convert distance to similarity.
         in the paper, this is described as :math:`h`.
