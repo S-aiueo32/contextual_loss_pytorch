@@ -59,7 +59,7 @@ def contextual_loss(x: torch.Tensor,
 def contextual_bilateral_loss(x: torch.Tensor,
                               y: torch.Tensor,
                               weight_sp: float = 0.1,
-                              band_width: float = 1.,
+                              band_width: float = 0.5,
                               loss_type: str = 'cosine'):
     """
     Computes Contextual Bilateral (CoBi) Loss between x and y,
